@@ -22,6 +22,7 @@ const assetsPath = path.join(__dirname, "public");
 // Middleware
 app.use(express.static(assetsPath));
 app.use(logger);
+app.use(express.urlencoded({ extended: true }));
 
 // View path and view engine
 app.set("views", path.join(__dirname, "views"));
@@ -31,12 +32,29 @@ app.set("view engine", "ejs");
 app.use("/messages", messagesRouter);
 
 // Routes
+
+//////////////// new ////////////////
 app.get("/new", (req, res) => {
   res.render("new");
 });
 
+app.post("/new", (req, res) => {
+  console.log(req.body);
+  let messageUser = req.body.user;
+  let messageText = req.body.message;
+  messages.push({
+    id: messages.length + 1,
+    user: messageUser,
+    text: messageText,
+    added: new Date(),
+  });
+  res.redirect("/");
+  res.end();
+});
+
+//////////////// main ////////////////
 app.get("/", (req, res) => {
-  res.render("index", { messages: messages });
+  res.render("index", { messages: messages, showOpenMessage: true });
 });
 
 app.get("*", (req, res) => {

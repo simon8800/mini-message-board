@@ -5,8 +5,8 @@
 <%- include('partials/navbar') %>
   <h1>Messages</h1>
   <div class="message-container">
-    <% for (let message of messages) { %> 
-      <%- include('messages/singleMessage', {message: message}) %>
+    <% for (let message of messages.reverse()) { %> 
+      <%- include('messages/messageCard', {message: message, showOpenMessage: showOpenMessage}) %>
     <% } %>
   </div>
 </body>

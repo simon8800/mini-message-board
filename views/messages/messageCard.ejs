@@ -10,5 +10,8 @@
   </div>
   <div class="card-content">
     <p class="text-gray-800"><%= message.text %></p>
+    <% if (showOpenMessage) { %>
+      <a href="/messages/<%= message.id %>"><button>Open message</button></a>
+    <% } %>
   </div>
 </div>

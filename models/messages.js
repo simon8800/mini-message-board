@@ -1,3 +1,5 @@
+let currentId = 2;
+
 const messages = [
   {
     id: 1,

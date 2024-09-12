@@ -6,7 +6,19 @@
 
   <h1>New Message</h1>
   <div class="form-container">
-    <form method="POST" action="/new"></form>
+    <form method="POST" action="/new">
+      <div class="flex">
+        <label for="user">User: </label>
+        <input type="text" name="user" id="user">
+      </div>
+      <div class="flex">
+        <label for="message">Message: </label>
+        <textarea name="message" id="message"></textarea>
+      </div>
+      <div>
+        <input type="submit" value="Send">
+      </div>
+    </form>
   </div>
 </body>
 </html>
